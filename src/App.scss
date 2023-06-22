@@ -1,0 +1,157 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --ff-primary: 'Outfit', sans-serif;
+  --color-green-50: #f0fdfb;
+  --color-green-100: #cdfaf5;
+  --color-green-200: #9af5eb;
+  --color-green-300: #60e8df;
+  --color-green-400: #2fd2cc;
+  --color-green-500: #16b6b3;
+  --color-green-600: #0e9393;
+  --color-green-700: #107475;
+  --color-green-800: #125b5d;
+  --color-green-900: #144c4d;
+  --color-green-950: #053134;
+
+
+}
+
+#root {
+  font-family: var(--ff-primary);
+  background-image: linear-gradient(180deg, #f0fdfbd5 50%, var(--color-green-800) 50%, var(--color-green-800) 100%);
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header {
+  position: absolute;
+  inset: 0 0 auto 0;
+  text-align: center;
+
+  &__title {
+    padding: 2rem 0;
+  }
+}
+
+.card {
+  width: 90%;
+  padding: 2rem;
+  max-width: 500px;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 6px 35px -8px rgba($color: #2fd2cc, $alpha: 0.14);
+
+}
+
+.card__body {
+  margin-top: 2rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.form {
+  &__item {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  &__input {
+    flex: 1 1 350px;
+    font-size: .875rem;
+    padding: 0 .5rem;
+    outline: 0;
+    background-color: #f0fdfba4;
+    border-radius: 5px;
+    border: 2px solid var(--color-green-700);
+    color: var(--color-green-900);
+
+    &::placeholder {
+      font-weight: 500;
+      color: var(--color-green-900);
+    }
+  }
+
+  &__submit,
+  &__input {
+    height: 44px;
+    border-radius: 6px;
+    
+  }
+  
+  &__submit {
+    flex: 1 1 64px;
+    font-size: .875rem;
+    border: 0;
+    cursor: pointer;
+    padding: 0 1.2rem;
+    background-color: #125b5d;
+    color: white;
+    transition: background-color 0.4s;
+
+    &:hover {
+      background-color: var(--color-green-700);
+    }
+  }
+
+  &__input,
+  &__submit {
+    font-family: inherit;
+  }
+}
+
+
+
+
+.task {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: .6rem 1rem;
+  border-radius: 6px;
+  background-color: #f0fdfb;
+  font-weight: 500;
+  color: #144c4d;
+
+  &__name {
+    font-size: .875rem;
+
+    &.active {
+      text-decoration: line-through;
+    }
+  }
+
+  &__left {
+    display: flex;
+    gap: .4rem;
+    align-items: center;
+  }
+
+  &__btn {
+    cursor: pointer;
+    width: 1.5rem;
+    aspect-ratio: 1;
+    border: 0;
+    background-color: transparent;
+    display: grid;
+    place-items: center;
+
+    svg {
+      color: #144c4d;
+      transition: all 0.4s;
+
+      &:hover {
+        color: #cdfaf5;
+      }
+    }
+  }
+}
