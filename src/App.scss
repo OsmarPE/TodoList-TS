@@ -8,24 +8,23 @@
 
 :root {
   --ff-primary: 'Outfit', sans-serif;
-  --color-green-50: #f0fdfb;
-  --color-green-100: #cdfaf5;
-  --color-green-200: #9af5eb;
-  --color-green-300: #60e8df;
-  --color-green-400: #2fd2cc;
-  --color-green-500: #16b6b3;
-  --color-green-600: #0e9393;
-  --color-green-700: #107475;
-  --color-green-800: #125b5d;
-  --color-green-900: #144c4d;
-  --color-green-950: #053134;
+  --color-green-100: #7EBA94;
+  --color-green-200: #20C997;
+  --color-white-100: #FDFDFD;
+  --color-white-200: #FFF8EB;
+  --color-gray-100: #52525B;
+
+}
 
 
+%centerItem{
+  display: grid;
+  place-items: center;
 }
 
 #root {
   font-family: var(--ff-primary);
-  background-image: linear-gradient(180deg, #f0fdfbd5 50%, var(--color-green-800) 50%, var(--color-green-800) 100%);
+  background-image: linear-gradient(180deg, var(--color-white-100) 50%, var(--color-green-200) 50%, var(--color-green-200) 100%);
   min-height: 100svh;
   display: flex;
   align-items: center;
@@ -46,61 +45,85 @@
   width: 90%;
   padding: 2rem;
   max-width: 500px;
-  border-radius: 10px;
   background-color: #fff;
-  box-shadow: 0 6px 35px -8px rgba($color: #2fd2cc, $alpha: 0.14);
+  border-radius: 20px;
+  border: 3px solid #000;
+  box-shadow: 10px 14px 0px 0px #000;
 
+  &__body {
+    display: grid;
+    gap: 1rem;
+  }
+
+  &__heading {
+    display: inline-flex;
+    gap: .5rem;
+    align-items: center;
+    margin: 1.5rem 0 1rem;
+  }
+
+  &__title {
+    font-size: 1rem;
+  }
 }
 
-.card__body {
-  margin-top: 2rem;
-  display: grid;
-  gap: 1rem;
-}
 
 .form {
   &__item {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 1fr max-content;
     gap: 1rem;
   }
 
   &__input {
-    flex: 1 1 350px;
+    // flex: 1 1 350px;
     font-size: .875rem;
-    padding: 0 .5rem;
+    padding: 0 1rem;
+    border-radius: 100px;
     outline: 0;
-    background-color: #f0fdfba4;
-    border-radius: 5px;
-    border: 2px solid var(--color-green-700);
-    color: var(--color-green-900);
+    border: 2px solid #000;
 
     &::placeholder {
       font-weight: 500;
-      color: var(--color-green-900);
+      color: var(--color-gray-100);
+
     }
   }
 
   &__submit,
   &__input {
-    height: 44px;
-    border-radius: 6px;
-    
-  }
-  
-  &__submit {
-    flex: 1 1 64px;
-    font-size: .875rem;
-    border: 0;
-    cursor: pointer;
-    padding: 0 1.2rem;
-    background-color: #125b5d;
-    color: white;
-    transition: background-color 0.4s;
+    height: 46px;
 
-    &:hover {
-      background-color: var(--color-green-700);
+  }
+
+  &__submit {
+    cursor: pointer;
+    position: absolute;
+    inset: 0;
+    border: 0;
+    background-color: transparent;
+
+    &-content {
+      position: relative;
+      background-color: var(--color-green-200);
+      width: 2.875rem;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      border: 2px solid black;
+      overflow: hidden;
+      display: grid;
+      place-items: center;
+      transition: all 0.4s ease;
+
+      &:hover {
+        opacity: .8;
+      }
+
+      svg {
+        width: 1.5rem;
+      }
     }
+
   }
 
   &__input,
@@ -113,21 +136,41 @@
 
 
 .task {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: .6rem 1rem;
-  border-radius: 6px;
-  background-color: #f0fdfb;
-  font-weight: 500;
-  color: #144c4d;
+  position: relative;
+  isolation: isolate;
+  &__body{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: .7rem 1rem;
+    background-color: var(--color-white-200);
+    font-weight: 500;
+    color: black;
+    border-radius: 10px;
+    border: 2px solid #000;
+    &:hover{
+      svg{
+        color: #000;
+      }
+    }
+  }
 
+  &::after{
+    content: '';
+    position: absolute;
+    top: 6px;
+    left: 4px;
+    width: calc(100% - 3px);
+    height: calc(100% - 4px);
+    border: 2px solid black;
+    border-radius: 10px;
+    z-index: -1;
+  }
+  
   &__name {
     font-size: .875rem;
 
-    &.active {
-      text-decoration: line-through;
-    }
+    
   }
 
   &__left {
@@ -144,14 +187,38 @@
     background-color: transparent;
     display: grid;
     place-items: center;
-
     svg {
-      color: #144c4d;
+      color: transparent;
       transition: all 0.4s;
-
       &:hover {
-        color: #cdfaf5;
+        color: rgba(0, 0, 0, 0.747);
       }
+    }
+  }
+
+  &__checkArea{
+    width: 1rem;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: 2px solid black;
+    position: relative;
+    overflow: hidden;
+    background-color: white;
+    & > input{
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+    }
+  }
+  &__check{
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    transition: background-color 0.4s ease;
+    @extend %centerItem;
+
+    &.active{
+      background-color: var(--color-green-100);
     }
   }
 }

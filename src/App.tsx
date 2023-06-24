@@ -4,16 +4,15 @@ import Header from './includes/Header'
 import Task from './components/Task'
 import {TaskType} from './types'
 import Form from './components/Form'
+import TaskIcon from './assets/icons/TaskIcon'
 function App() {
 
     
 
   const [tasks, setTasks] = useState<TaskType[]>([
-    { id: 1, task: 'Hacer la compra', check: false },
-    { id: 2, task: 'Llamar al médico', check: true },
-    { id: 3, task: 'Enviar el informe', check: false },
-    { id: 4, task: 'Limpiar la casa', check: true },
-    { id: 5, task: 'Preparar la cena', check: false }
+    { id: 1, task: 'Go to school at 3:00', check: false },
+    { id: 2, task: 'Send progress report to the manager', check: true },
+    { id: 3, task: 'Prepare presentation for the meeting', check: false }
   ])
 
   const [value, setvalue] = useState<string>('')
@@ -58,6 +57,12 @@ function App() {
 
       <main className='card'>
         <Form HandleSubmit={HandleSubmit} setvalue={setvalue} value={value}/>
+
+        <header className="card__heading">
+            <TaskIcon/>
+            <h2 className='card__title'>Tasks</h2>
+        </header>
+
         <div className='card__body'>
           {
             tasks.map(item => <Task key={item.id} taskItem={item} removeTask={removeTask} setIsChecked={setIsChecked} /> )
